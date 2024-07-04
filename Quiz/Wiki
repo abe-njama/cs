@@ -1,0 +1,175 @@
+The program runs a simple and fun interactive quiz whose flow is comprised of multiple choice questions where the user is expected to type in one of the displayed options as their answer. The first part of the program imports the Scanner class. This is used to handle user input which enables the quiz to be interactive and respond to user input.
+import java.util.Scanner;  // Import the Scanner class for user input
+
+The program starts by displaying a welcome message to the user. The message reads,”Welcome to today’s quiz!”. The program is as shown below:
+
+public class Quiz {
+    public static void main(String[] args) {
+        System.out.println("Welcome to today's quiz!");
+
+The output of this program is as shown:
+
+
+
+The program then displays the first question to the user. Overall, the program has a set of five questions each with four corresponding multiple choice options and these are presented to the user one by one. There are three arrays; questions, options and answers. Questions contains the quiz questions, options contains the multiple-choice options for each questions and answers contains the correct answer to each question.
+
+        // Array of questions
+        String[] questions = {
+    "Which is the correct Fibonacci Sequence?",
+    "In which continent is the country Kenya located?",
+    "Which medium does not transmit sound?",
+    "Which one of these is a major contributor to global warming?",
+    "Which is the largest organ on the human body?"
+    };
+
+    // Array of four options for each question
+    String[] options = {
+    "A. 0, 0, 1, 2, 3, 5, 8, 13, 21\nB. 0, 1, 1, 2, 3, 5, 8, 13, 21\nC. 0, 2, 3, 5, 8, 13, 21, 34, 55\nD. 1, 2, 3, 5, 8, 13, 34, 55, 89",
+    "A. Asia\nB. Europe\nC. Australia\nD. Africa",
+    "A. Vacuum\nB. Air\nC. Liquid\nD. Solid",
+    "A. Sports\nB. Cows in the field\nC. Burning fossil fuels\nD. None of the above",
+    "A. Skin\nB. Liver\nC. Heart\nD. Brain"
+    };
+
+    // Array of answers to each question
+    char[] answers = {'B','D','A','C','A'};
+
+The output on the user’s screen to the first question is as shown here:
+
+The program uses a loop to iterate through each question where for each question, it displays the question and corresponding multiple-choice options. The user is prompted to type in their answer and the program validates the input by the user to ensure it is one of the allowed characters; A, B, C or D using a switch-case statement. Should the user type in an invalid answer, they are prompted to type in either one of the allowed characters until a valid input is provided.
+// Loop through each question
+    for (int i = 0; i < totalQuestions; i++) {
+        System.out.println("Question " + (i + 1) + "/5:");
+        System.out.println(questions[i]);
+        System.out.println(options[i]);
+
+        // Variable to store the answer    
+        String answer;
+        boolean validAnswer = false;
+            
+    // Using a switch-case statement to validate the answer
+    do {
+        System.out.print("Please type either A, B, C, or D as your answer: ");
+        answer = scanner.nextLine().trim().toUpperCase();
+        switch (answer) {
+            case "A":
+            case "B":
+            case "C":
+            case "D":
+                validAnswer = true;
+                break;
+            default:
+                System.out.println("Invalid input.");
+                break;
+        }
+    } while (!validAnswer);
+
+In the example shown below, the initial input to the first question, was an invalid character K. The prompt to the user was,”Invalid input. Please type either A, B, C or D as your answer:”. I followed it up by typing b(lower case) as my answer and the program converted that to an upper case letter before displaying the next question.
+
+Once a submission that meets abides by the valid character rules it made, the program compares it with the correct answer. If the user’s answer matches the correct answer, their score is incremented. The if statement in the program checks if the user’s answer matches the correct answer stored in the answers array.
+    // Convert the answer to a char and check if it matches the answer to the question
+    char userAnswer = answer.charAt(0);
+    if (userAnswer == answers[i]) {
+        score++;
+    }
+
+After all the five questions are answered, the program calculates the user’s total score as a percentage of the total questions. The program displays the final score and percentage. The program closes the Scanner object in order to efficiently manage the resources.
+    // Calculate the percentage score
+    double percentage = (double) score / totalQuestions * 100;
+
+    // Display the final score and percentage
+    System.out.println("\nFinal score is: " + score + "/" + totalQuestions);
+    System.out.println("Percentage: " + percentage + "%");
+
+    // Close the Scanner object
+    scanner.close();
+ }
+}
+
+The output is as seen below:
+
+The code of the simple quiz game is:
+import java.util.Scanner;  // Import the Scanner class for user input
+
+ /**
+ * A simple and fun interactive quiz program that asks the user a series of questions,
+ * validates the input, calculates the score, and displays the results.
+ */
+
+public class Quiz {
+    public static void main(String[] args) {
+        System.out.println("Welcome to today's quiz!");
+
+        // Array of questions
+        String[] questions = {
+    "Which is the correct Fibonacci Sequence?",
+    "In which continent is the country Kenya located?",
+    "Which medium does not transmit sound?",
+    "Which one of these is a major contributor to global warming?",
+    "Which is the largest organ on the human body?"
+    };
+
+    // Array of four options for each question
+    String[] options = {
+    "A. 0, 0, 1, 2, 3, 5, 8, 13, 21\nB. 0, 1, 1, 2, 3, 5, 8, 13, 21\nC. 0, 2, 3, 5, 8, 13, 21, 34, 55\nD. 1, 2, 3, 5, 8, 13, 34, 55, 89",
+    "A. Asia\nB. Europe\nC. Australia\nD. Africa",
+    "A. Vacuum\nB. Air\nC. Liquid\nD. Solid",
+    "A. Sports\nB. Cows in the field\nC. Burning fossil fuels\nD. None of the above",
+    "A. Skin\nB. Liver\nC. Heart\nD. Brain"
+    };
+
+    // Array of answers to each question
+    char[] answers = {'B','D','A','C','A'};
+
+    int score = 0;
+    int totalQuestions = questions.length;
+
+    Scanner scanner = new Scanner(System.in);
+
+    // Loop through each question
+    for (int i = 0; i < totalQuestions; i++) {
+        System.out.println("Question " + (i + 1) + "/5:");
+        System.out.println(questions[i]);
+        System.out.println(options[i]);
+
+        // Variable to store the answer    
+        String answer;
+        boolean validAnswer = false;
+            
+    // Using a switch-case statement to validate the answer
+    do {
+        System.out.print("Please type either A, B, C, or D as your answer: ");
+        answer = scanner.nextLine().trim().toUpperCase();
+        switch (answer) {
+            case "A":
+            case "B":
+            case "C":
+            case "D":
+                validAnswer = true;
+                break;
+            default:
+                System.out.println("Invalid input.");
+                break;
+        }
+    } while (!validAnswer);
+
+    // Convert the answer to a char and check if it matches the answer to the question
+    char userAnswer = answer.charAt(0);
+    if (userAnswer == answers[i]) {
+        score++;
+    }
+}
+
+    // Calculate the percentage score
+    double percentage = (double) score / totalQuestions * 100;
+
+    // Display the final score and percentage
+    System.out.println("\nFinal score is: " + score + "/" + totalQuestions);
+    System.out.println("Percentage: " + percentage + "%");
+
+    // Close the Scanner object
+    scanner.close();
+ }
+}
+
+The output of the fun quiz is as shown below:
