@@ -1,0 +1,25 @@
+To compile the Java code and run the program, follow these steps:
+
+Create the following Java files and copy the corresponding code into each file:
+1. Student.java
+2. Course.java
+3. CourseManagement.java
+4. AdministratorInterface.java
+
+Navigate to the directory that has all your java files:
+cd path/to/your/directory
+
+Compile the java files:
+javac Student.java
+javac Course.java
+javac CourseManagement.java
+javac AdministratorInterface.java
+
+or
+
+javac *.java
+
+Run the program:
+java AdministratorInterface
+
+This should start the interactive command-line interface for the Course Enrollment and Grade Management System.
